@@ -1,7 +1,7 @@
 import { ApiProperty } from '@midwayjs/swagger';
 import { BaseEntity } from './base.entity';
 import { Rule, RuleType } from '@midwayjs/validate';
-import { omit } from 'loadsh';
+import { omit } from 'lodash';
 
 export class BaseDTO<T extends BaseEntity> {
   @ApiProperty({ description: 'id' })

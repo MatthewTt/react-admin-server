@@ -19,6 +19,10 @@ export default {
         synchronize: true, // 自动同步数据库表结构
         logging: false,
         entities: ['**/entity/*{.ts,.js}'],
+        migrations: ['**/migration/*.ts'],
+        cli: {
+          migrationsDir: 'migration',
+        },
       },
     },
   },

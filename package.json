@@ -16,7 +16,7 @@
     "@midwayjs/typeorm": "3",
     "@midwayjs/validate": "^3.12.0",
     "bcryptjs": "^2.4.3",
-    "loadsh": "^0.0.4",
+    "lodash": "^4.17.21",
     "mysql2": "^3.6.1",
     "nanoid": "3",
     "node-rsa": "^1.1.1",
@@ -43,14 +43,17 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "start": "NODE_ENV=production node ./bootstrap.js",
+    "start": "node ./srcipt/init-database && npm run migration:run && NODE_ENV=production pm2-runtime start ./bootstrap.js",
     "dev": "cross-env NODE_ENV=local midway-bin dev --ts",
     "test": "midway-bin test --ts",
     "cov": "midway-bin cov --ts",
     "lint": "mwts check",
     "lint:fix": "mwts fix",
     "ci": "npm run cov",
-    "build": "midway-bin build -c"
+    "build": "midway-bin build -c",
+    "migration:generate:dev": "node ./node_modules/@midwayjs/typeorm/cli.js migration:generate -d ./src/config/config.default.ts ./src/migration/migration",
+    "migration:generate": "node ./node_modules/@midwayjs/typeorm/cli.js migration:generate -d ./src/config/typeorm.prod.ts ./src/migration/migration",
+    "migration:run": "node ./node_modules/@midwayjs/typeorm/cli.js migration:run -d ./src/config/typeorm.prod.ts"
   },
   "midway-bin-clean": [
     ".vscode/.tsbuildinfo",
