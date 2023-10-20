@@ -20,6 +20,7 @@ COPY --from=builder /app/pnpm-lock.yaml ./
 COPY --from=builder /app/node_modules ./node_modules
 ENV TZ=Asia/Shanghai
 
+RUN npm install -g pnpm
 # 不需要安装dev依赖
 RUN pnpm install --prod
 
