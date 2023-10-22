@@ -20,7 +20,8 @@
     "mysql2": "^3.6.1",
     "nanoid": "3",
     "node-rsa": "^1.1.1",
-    "typeorm": "^0.3.17"
+    "typeorm": "^0.3.17",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@midwayjs/cli": "^2.0.0",
