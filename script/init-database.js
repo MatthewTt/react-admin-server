@@ -13,7 +13,7 @@ function connect() {
     password,
   });
 
-  connection.connect(err => {
+  connection.connect(async err => {
     if (err) {
       console.log(`host: ${host}`);
       console.log(`user: ${user}`);
@@ -34,7 +34,7 @@ function connect() {
     }
     console.log('数据库链接成功');
 
-    connection.query(
+    await connection.query(
       `SELECT * FROM information_schema.SCHEMATA where SCHEMA_NAME = '${database}'`,
       (err, result) => {
         if (err) {
@@ -57,7 +57,7 @@ function connect() {
         }
       }
     );
-    connection.end();
+    await connection.end();
   });
 }
 
