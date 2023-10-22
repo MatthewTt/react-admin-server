@@ -44,7 +44,11 @@ function connect() {
 
         if (result.length === 0) {
           console.log(`数据库${database}不存在，正在创建...`);
-          connection.query(`CREATE DATABASE ${database}`, () => {
+          connection.query(`CREATE DATABASE \`${database}\``, err => {
+            if (err) {
+              console.log(err);
+              return;
+            }
             console.log(`数据库${database}创建成功`);
             process.exit();
           });
