@@ -32,6 +32,7 @@ function connect() {
       }, 1000);
       return;
     }
+    console.log('数据库链接成功');
 
     connection.query(
       `SELECT * FROM information_schema.SCHEMATA where SCHEMA_NAME = '${database}'`,
@@ -52,9 +53,8 @@ function connect() {
         }
       }
     );
+    connection.end();
   });
-
-  connection.end();
 }
 
 connect();
