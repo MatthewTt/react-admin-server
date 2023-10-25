@@ -1,5 +1,6 @@
 import { MidwayConfig } from '@midwayjs/core';
 import { TokenConfig } from '../module/auth/service/token.config';
+import { env } from 'process';
 
 export default {
   // use for cookie sign key, should change to your own and keep security
@@ -29,8 +30,8 @@ export default {
   redis: {
     client: {
       port: 6379, // Redis port
-      host: 'localhost', // Redis host
-      password: '',
+      host: env.REDIS_HOST || 'localhost', // Redis host
+      password: env.REDIS_PASSWORD || '',
       db: 0,
     },
   },

@@ -12,6 +12,7 @@ export default {
         database: env.DB_DATABASE || 'react-admin',
         synchronize: false, // 自动同步数据库表结构
         logging: false,
+        // entities: [join(__dirname, '**', '*.entity.{ts,js}')],
         entities: ['**/entity/*{.ts,.js}'],
         // 迁移存在的文件路径
         migrations: ['**/migration/*.ts'],
